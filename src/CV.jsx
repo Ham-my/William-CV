@@ -1,28 +1,31 @@
 import { useState } from 'react'
 import './CV.css'
-import yachtImage from './assets/image.png'
+import portraitImage from './assets/william_image.jpeg'
 
 const details = [
   { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '+27 63 534 0030', href: 'tel:+27635340030' },
-  { label: 'Nationality', value: 'South Africa' },
+  { label: 'Phone', value: '+27 60 320 5204', href: 'tel:+27603205204' },
+  { label: 'Nationality', value: 'South African' },
   { label: 'Languages', value: 'English' },
   { label: 'Date of birth', value: '16 September 2003' },
   { label: "Visas", value: 'N/A — British Passport' },
   { label: 'Health status', value: 'Excellent' },
   { label: 'Smoker', value: 'No' },
   { label: 'Tattoos', value: 'None' },
-  { label: 'Current location', value: 'Bohobos, Antibes' },
-  { label: 'Availability', value: 'Immediate' },
+  { label: 'Current location', value: 'Antibes' },
+  { label: 'Availability', value: 'Immediately' },
+  { label: 'Height', value: '6ft 4in' },
 ]
 
 const qualifications = [
-  'STCW',
-  'ENG1',
-  'AEC 1',
-  'Jet Ski Instructor',
-  'Small Powerboat & RIB Master',
-  'Introduction to VHF Radio Operations',
+  'ENG1 (valid 12 February 2026 to 12 February 2028)',
+  'STCW 2010 (issued January 2026)',
+  'IYT Small Powerboat and RIB Master (valid 5 March 2026 to 4 March 2031)',
+  'MCA AEC1 Approved Engine Course',
+  'RYA Personal Watercraft Certificate of Proficiency (PWC)',
+  'RYA Temporary Instructor Certificate (PWI)',
+  'PADI Open Water',
+  'PADI Advanced Open Water',
 ]
 
 const OPEN_DETAILS = 'details'
@@ -39,9 +42,20 @@ function CV() {
   return (
     <article className="cv">
       <header className="cv-header">
-        <div className="cv-header-accent" />
-        <h1 className="cv-name">William Douglas Hamilton</h1>
-        <p className="cv-title">Deckhand · Yacht Crew</p>
+        <div className="cv-header-text">
+          <div className="cv-header-accent" />
+          <h1 className="cv-name">William Douglas Hamilton</h1>
+          <p className="cv-title">Deckhand · Yacht Crew</p>
+          <div className="cv-header-contact">
+            <a href="tel:+27603205204" className="cv-header-phone">+27 60 320 5204</a>
+            <a href="mailto:hamiltonw435@gmail.com" className="cv-cta">Get in touch via Email</a>
+          </div>
+        </div>
+        <img
+          className="cv-portrait"
+          src={portraitImage}
+          alt="William Douglas Hamilton"
+        />
       </header>
 
       <section className={`cv-section cv-details cv-dropdown ${openPanel === OPEN_DETAILS ? 'is-open' : ''}`}>
@@ -61,7 +75,7 @@ function CV() {
           <ul className="details-list">
             {details.map(({ label, value, href }) => (
               <li key={label} className="details-item">
-                <span className="details-label">{label}</span>
+                <span className="details-label">{label}:</span>
                 <span className="details-value">
                   {href ? (
                     <a href={href} className="details-link">{value}</a>
@@ -70,6 +84,28 @@ function CV() {
                   )}
                 </span>
               </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className={`cv-section cv-dropdown ${openPanel === OPEN_QUALIFICATIONS ? 'is-open' : ''}`}>
+        <h2 className="cv-section-title cv-dropdown-title-desktop">Qualifications</h2>
+        <button
+          type="button"
+          className="cv-dropdown-trigger"
+          onClick={() => togglePanel(OPEN_QUALIFICATIONS)}
+          aria-expanded={openPanel === OPEN_QUALIFICATIONS}
+          aria-controls="cv-qualifications-content"
+          id="cv-qualifications-trigger"
+        >
+          <span className="cv-dropdown-trigger-text">Qualifications</span>
+          <span className="cv-dropdown-chevron" aria-hidden />
+        </button>
+        <div id="cv-qualifications-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-qualifications-trigger">
+          <ul className="qualifications-list">
+            {qualifications.map((q, i) => (
+              <li key={i} className="qualification-item">{q}</li>
             ))}
           </ul>
         </div>
@@ -90,44 +126,15 @@ function CV() {
         </button>
         <div id="cv-profile-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-profile-trigger">
           <p className="cv-profile">
-            Hardworking and well-presented individual seeking a Deckhand position on a yacht.
+            Hard-working and well-presented individual seeking a Deckhand position on a yacht.
             Strong team player with a hands-on work ethic and high attention to detail.
             STCW certified and ready to contribute to maintaining exceptional standards of
             safety, cleanliness, and guest experience onboard.
+            I enjoy a range of outdoor and skill-based activities, including target shooting at
+            controlled ranges, horse riding, cycling, and hiking.
           </p>
         </div>
       </section>
-
-      <section className={`cv-section cv-dropdown ${openPanel === OPEN_QUALIFICATIONS ? 'is-open' : ''}`}>
-        <h2 className="cv-section-title cv-dropdown-title-desktop">Qualifications</h2>
-        <button
-          type="button"
-          className="cv-dropdown-trigger"
-          onClick={() => togglePanel(OPEN_QUALIFICATIONS)}
-          aria-expanded={openPanel === OPEN_QUALIFICATIONS}
-          aria-controls="cv-qualifications-content"
-          id="cv-qualifications-trigger"
-        >
-          <span className="cv-dropdown-trigger-text">Qualifications</span>
-          <span className="cv-dropdown-chevron" aria-hidden />
-        </button>
-        <div id="cv-qualifications-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-qualifications-trigger">
-          <ul className="qualifications-list">
-            {qualifications.map((q) => (
-              <li key={q} className="qualification-item">{q}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <footer className="cv-footer">
-        <a href="tel:+27635340030" className="cv-footer-phone">+27 63 534 0030</a>
-        <a href="mailto:hamiltonw435@gmail.com" className="cv-cta">Get in touch via Email</a>
-      </footer>
-
-      <div className="cv-yacht-image">
-        <img src={yachtImage} alt="Yacht sailing" />
-      </div>
     </article>
   )
 }
