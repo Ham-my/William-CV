@@ -3,34 +3,36 @@ import './CV.css'
 import portraitImage from './assets/william_image.jpeg'
 
 const details = [
+  { label: 'Nationality', value: 'South African & British' },
+  { label: 'Passports held', value: 'South African; British' },
+  { label: 'DOB', value: '16 September 2003; South Africa' },
+  { label: 'Height', value: "193cm (6'4\")" },
+  { label: 'Health', value: 'Excellent, non-smoker, no tattoos' },
+  { label: 'Languages', value: 'English (Fluent)' },
+  { label: 'Marital status', value: 'Single, no dependents' },
+  { label: 'Current location', value: 'Antibes, France' },
   { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '+27 60 320 5204', href: 'tel:+27603205204' },
-  { label: 'Nationality', value: 'South African' },
-  { label: 'Languages', value: 'English' },
-  { label: 'Date of birth', value: '16 September 2003' },
-  { label: "Visas", value: 'N/A — British Passport' },
-  { label: 'Health status', value: 'Excellent' },
-  { label: 'Smoker', value: 'No' },
-  { label: 'Tattoos', value: 'None' },
-  { label: 'Current location', value: 'Antibes' },
-  { label: 'Availability', value: 'Immediately' },
-  { label: 'Height', value: '6ft 4in' },
+  { label: 'Phone', value: '+33' },
 ]
 
+const profileSummary = `Motivated and reliable entry-level deckhand holding an MCA Yacht Rating and AEC1 qualification, with a strong work ethic and hands-on experience in physically demanding environments. Recently gained basic mechanical exposure assisting with maintenance and troubleshooting of a Toyoshacs tractor 3-cylinder diesel engine, developing general mechanical awareness and problem-solving skills. Physically fit, safety-conscious, and eager to develop a career within the yachting industry. Strong team player with a positive attitude, keen attention to detail, and a willingness to assist the engineering department when required while primarily focusing on deck operations.`
+
 const qualifications = [
-  'ENG1 (valid 12 February 2026 to 12 February 2028)',
-  'STCW 2010 (issued January 2026)',
-  'IYT Small Powerboat and RIB Master (valid 5 March 2026 to 4 March 2031)',
-  'MCA AEC1 Approved Engine Course',
-  'RYA Personal Watercraft Certificate of Proficiency (PWC)',
-  'RYA Temporary Instructor Certificate (PWI)',
-  'PADI Open Water',
-  'PADI Advanced Open Water',
+  'STCW 2010 Basic Safety Training (Exp: Jan 2031)',
+  'ENG1 Seafarer Medical Certificate (Exp: Feb 2028)',
+  'MCA Yacht Rating Certificate',
+  'Elementary Seamanship for Yacht Crew',
+  'MCA AEC1 (Approved Engine Course)',
+  'IYT Small Powerboat and RIB Master (Exp: March 2031)',
+  'IYT Basic VHF-SRC',
+  'RYA PWC Proficiency',
+  'RYA PWC Instructor (Temporary Exp: 10 June 2026)',
+  'PADI Advanced Open Water Diver',
 ]
 
 const OPEN_DETAILS = 'details'
-const OPEN_PROFILE = 'profile'
 const OPEN_QUALIFICATIONS = 'qualifications'
+const OPEN_ADDITIONAL = 'additional'
 
 function CV() {
   const [openPanel, setOpenPanel] = useState(null)
@@ -59,7 +61,7 @@ function CV() {
       </header>
 
       <section className={`cv-section cv-details cv-dropdown ${openPanel === OPEN_DETAILS ? 'is-open' : ''}`}>
-        <h2 className="cv-section-title cv-dropdown-title-desktop">Details</h2>
+        <h2 className="cv-section-title cv-dropdown-title-desktop">Details & Profile</h2>
         <button
           type="button"
           className="cv-dropdown-trigger"
@@ -68,29 +70,34 @@ function CV() {
           aria-controls="cv-details-content"
           id="cv-details-trigger"
         >
-          <span className="cv-dropdown-trigger-text">Details</span>
+          <span className="cv-dropdown-trigger-text">Details & Profile</span>
           <span className="cv-dropdown-chevron" aria-hidden />
         </button>
         <div id="cv-details-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-details-trigger">
-          <ul className="details-list">
-            {details.map(({ label, value, href }) => (
-              <li key={label} className="details-item">
-                <span className="details-label">{label}:</span>
-                <span className="details-value">
-                  {href ? (
-                    <a href={href} className="details-link">{value}</a>
-                  ) : (
-                    value
-                  )}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="cv-details-inner">
+            <ul className="details-list">
+              {details.map(({ label, value, href }) => (
+                <li key={label} className="details-item">
+                  <span className="details-label">{label}:</span>
+                  <span className="details-value">
+                    {href ? (
+                      <a href={href} className="details-link">{value}</a>
+                    ) : (
+                      value
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="cv-details-profile">
+              <p className="cv-profile">{profileSummary}</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className={`cv-section cv-dropdown ${openPanel === OPEN_QUALIFICATIONS ? 'is-open' : ''}`}>
-        <h2 className="cv-section-title cv-dropdown-title-desktop">Qualifications</h2>
+        <h2 className="cv-section-title cv-dropdown-title-desktop">Qualifications and licences</h2>
         <button
           type="button"
           className="cv-dropdown-trigger"
@@ -99,7 +106,7 @@ function CV() {
           aria-controls="cv-qualifications-content"
           id="cv-qualifications-trigger"
         >
-          <span className="cv-dropdown-trigger-text">Qualifications</span>
+          <span className="cv-dropdown-trigger-text">Qualifications and licences</span>
           <span className="cv-dropdown-chevron" aria-hidden />
         </button>
         <div id="cv-qualifications-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-qualifications-trigger">
@@ -111,28 +118,62 @@ function CV() {
         </div>
       </section>
 
-      <section className={`cv-section cv-dropdown ${openPanel === OPEN_PROFILE ? 'is-open' : ''}`}>
-        <h2 className="cv-section-title cv-dropdown-title-desktop">Profile</h2>
+      <section className={`cv-section cv-dropdown cv-additional ${openPanel === OPEN_ADDITIONAL ? 'is-open' : ''}`}>
+        <h2 className="cv-section-title cv-dropdown-title-desktop">Additional Information</h2>
         <button
           type="button"
           className="cv-dropdown-trigger"
-          onClick={() => togglePanel(OPEN_PROFILE)}
-          aria-expanded={openPanel === OPEN_PROFILE}
-          aria-controls="cv-profile-content"
-          id="cv-profile-trigger"
+          onClick={() => togglePanel(OPEN_ADDITIONAL)}
+          aria-expanded={openPanel === OPEN_ADDITIONAL}
+          aria-controls="cv-additional-content"
+          id="cv-additional-trigger"
         >
-          <span className="cv-dropdown-trigger-text">Profile</span>
+          <span className="cv-dropdown-trigger-text">Additional Information</span>
           <span className="cv-dropdown-chevron" aria-hidden />
         </button>
-        <div id="cv-profile-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-profile-trigger">
-          <p className="cv-profile">
-            Hard-working and well-presented individual seeking a Deckhand position on a yacht.
-            Strong team player with a hands-on work ethic and high attention to detail.
-            STCW certified and ready to contribute to maintaining exceptional standards of
-            safety, cleanliness, and guest experience onboard.
-            I enjoy a range of outdoor and skill-based activities, including target shooting at
-            controlled ranges, horse riding, cycling, and hiking.
-          </p>
+        <div id="cv-additional-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-additional-trigger">
+          <div className="cv-additional-inner">
+            <div className="additional-block">
+              <h3 className="additional-heading">Experience</h3>
+              <p className="additional-subheading">Practical Mechanical Exposure (Informal)</p>
+              <ul className="additional-list">
+                <li>Assisted in maintenance and troubleshooting of a tractor diesel engine under supervision</li>
+                <li>Gained basic understanding of mechanical systems and fault-finding</li>
+                <li>Developed hands-on problem-solving skills in a workshop environment</li>
+              </ul>
+            </div>
+
+            <div className="additional-block">
+              <h3 className="additional-heading">Education</h3>
+              <ul className="additional-list">
+                <li>
+                  <strong>Belgium Campus ITversity</strong> (2024–2025)
+                  <span className="additional-li-detail">Diploma in Information Technology (2 years completed)</span>
+                </li>
+                <li>
+                  <strong>Quest Africa</strong> (2023)
+                  <span className="additional-li-detail">Gap Year Programme — Leadership, personal development and outdoor training</span>
+                </li>
+                <li>
+                  <strong>GED — General Education Development</strong>
+                  <span className="additional-li-detail">Completed 2023</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="additional-block">
+              <h3 className="additional-heading">Interests and hobbies</h3>
+              <p className="additional-prose">
+                I enjoy a range of outdoor and skill-based activities, including target shooting at controlled ranges,
+                horse riding, cycling, hiking, swimming and canoeing.
+              </p>
+            </div>
+
+            <div className="additional-block">
+              <h3 className="additional-heading">References</h3>
+              <p className="additional-prose">References available upon request.</p>
+            </div>
+          </div>
         </div>
       </section>
     </article>
