@@ -5,17 +5,19 @@ import portraitImage from './assets/william_image.jpeg'
 const details = [
   { label: 'Nationality', value: 'South African & British' },
   { label: 'Passports held', value: 'South African; British' },
-  { label: 'DOB', value: '16 September 2003; South Africa' },
+  { label: 'Date of Birth', value: '16/09/2003' },
+  { label: 'Place of Birth', value: 'South Africa' },
   { label: 'Height', value: "193cm (6'4\")" },
-  { label: 'Health', value: 'Excellent, non-smoker, no tattoos' },
+  { label: 'Health', value: 'Excellent, non-smoker' },
+  { label: 'Tattoos', value: 'None' },
   { label: 'Languages', value: 'English (Fluent)' },
   { label: 'Marital status', value: 'Single, no dependents' },
   { label: 'Current location', value: 'Antibes, France' },
   { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '+33' },
+  { label: 'Phone', value: '' },
 ]
 
-const profileSummary = `Motivated and reliable entry-level deckhand holding an MCA Yacht Rating and AEC1 qualification, with a strong work ethic and hands-on experience in physically demanding environments. Recently gained basic mechanical exposure assisting with maintenance and troubleshooting of a Toyoshacs tractor 3-cylinder diesel engine, developing general mechanical awareness and problem-solving skills. Physically fit, safety-conscious, and eager to develop a career within the yachting industry. Strong team player with a positive attitude, keen attention to detail, and a willingness to assist the engineering department when required while primarily focusing on deck operations.`
+const profileSummary = `Motivated and reliable entry-level deckhand holding an MCA Yacht Rating and AEC1 qualification, with a strong work ethic and hands-on experience in physically demanding environments. Recently gained basic mechanical exposure assisting with maintenance and troubleshooting of a Toyosha CS 86 tractor 3-cylinder diesel engine, developing general mechanical awareness and problem-solving skills. Physically fit, safety-conscious, and eager to develop a career within the yachting industry. Strong team player with a positive attitude, keen attention to detail, and a willingness to assist the engineering department when required while primarily focusing on deck operations.`
 
 const qualifications = [
   'MCA Yacht Rating Certificate',
