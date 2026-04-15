@@ -28,7 +28,7 @@ const qualifications = [
   'IYT Small Powerboat and RIB Master (Exp: March 2031)',
   'IYT Basic VHF-SRC',
   'RYA PWC Proficiency',
-  'RYA PWC Instructor (Temporary Exp: 10 June 2026)',
+  'RYA PWC Instructor',
   'PADI Advanced Open Water Diver',
 ]
 
