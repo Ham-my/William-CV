@@ -17,7 +17,7 @@ const details = [
   { label: 'Marital status', value: 'Single, no dependents' },
   { label: 'Current location', value: 'Antibes, France' },
   { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '+27 60 320 5204', href: WHATSAPP_URL, suffix: ' (available on WhatsApp) ' },
+  { label: 'Phone', value: '+27 60 320 5204', href: WHATSAPP_URL, suffix: ' (available on WhatsApp; click above)' },
 ]
 
 const profileSummary = `Motivated and reliable entry-level deckhand holding an MCA Yacht Rating and AEC1 qualification, with a strong work ethic and hands-on experience in physically demanding environments. Recently gained basic mechanical exposure assisting with maintenance and troubleshooting of a Toyosha CS 86 tractor 3-cylinder diesel engine, developing general mechanical awareness and problem-solving skills. Physically fit, safety-conscious, and eager to develop a career within the yachting industry. Strong team player with a positive attitude, keen attention to detail, and a willingness to assist the engineering department when required while primarily focusing on deck operations.`
