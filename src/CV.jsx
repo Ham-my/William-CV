@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './CV.css'
 import portraitImage from './assets/william_image.jpeg'
 
@@ -41,10 +41,24 @@ const OPEN_ADDITIONAL = 'additional'
 
 function CV() {
   const [openPanel, setOpenPanel] = useState(null)
+  const [portraitLightboxOpen, setPortraitLightboxOpen] = useState(false)
 
   const togglePanel = (panel) => {
     setOpenPanel((current) => (current === panel ? null : panel))
   }
+
+  useEffect(() => {
+    if (!portraitLightboxOpen) return
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setPortraitLightboxOpen(false)
+    }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [portraitLightboxOpen])
 
   return (
     <article className="cv">
@@ -69,12 +83,48 @@ function CV() {
             <a href="mailto:hamiltonw435@gmail.com" className="cv-cta">Get in touch via Email</a>
           </div>
         </div>
-        <img
-          className="cv-portrait"
-          src={portraitImage}
-          alt="William Douglas Hamilton"
-        />
+        <button
+          type="button"
+          className="cv-portrait-trigger"
+          onClick={() => setPortraitLightboxOpen(true)}
+          aria-label="View larger portrait photo"
+        >
+          <img
+            className="cv-portrait"
+            src={portraitImage}
+            alt=""
+          />
+        </button>
       </header>
+
+      {portraitLightboxOpen ? (
+        <div
+          className="cv-portrait-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Portrait photo"
+          onClick={() => setPortraitLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            className="cv-portrait-lightbox-close"
+            onClick={() => setPortraitLightboxOpen(false)}
+            aria-label="Close photo"
+          >
+            ×
+          </button>
+          <div
+            className="cv-portrait-lightbox-frame"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              className="cv-portrait-lightbox-img"
+              src={portraitImage}
+              alt="William Douglas Hamilton"
+            />
+          </div>
+        </div>
+      ) : null}
 
       <section className={`cv-section cv-details cv-dropdown ${openPanel === OPEN_DETAILS ? 'is-open' : ''}`}>
         <h2 className="cv-section-title cv-dropdown-title-desktop">Details & Profile</h2>
