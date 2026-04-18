@@ -150,7 +150,7 @@ function CV() {
                       <>
                         <a
                           href={href}
-                          className="details-link"
+                          className={`details-link${label === 'Phone' ? ' details-link--phone-mobile' : ''}`}
                           {...(href.startsWith('http')
                             ? { target: '_blank', rel: 'noopener noreferrer' }
                             : {})}
