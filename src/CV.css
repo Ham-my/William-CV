@@ -209,7 +209,7 @@
   border-radius: 2px;
 }
 
-/* Phone as tap-friendly button (mobile only) */
+/* Header phone as tap-friendly button (mobile only); Details phone stays simple link */
 @media (max-width: 639px) {
   .cv-header-phone-line {
     flex-direction: column;
@@ -248,40 +248,6 @@
 
   .cv-header-phone-note {
     padding-left: 0.1rem;
-  }
-
-  .details-link.details-link--phone-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 100%;
-    min-height: 2.75rem;
-    margin-top: 0.2rem;
-    padding: 0.55rem 0.75rem;
-    box-sizing: border-box;
-    background: var(--navy);
-    color: var(--white);
-    border-radius: 8px;
-    text-decoration: none;
-    text-decoration-color: transparent;
-  }
-
-  .details-link.details-link--phone-mobile:hover,
-  .details-link.details-link--phone-mobile:active {
-    background: var(--navy-light);
-    color: var(--white);
-    text-decoration: none;
-  }
-
-  .details-link.details-link--phone-mobile:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 2px;
-  }
-
-  .details-value .details-suffix {
-    display: block;
-    margin-top: 0.35rem;
   }
 }
 
