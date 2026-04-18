@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './CV.css'
 import portraitImage from './assets/william_image.jpeg'
 
+/** +27 60 320 5204 — opens WhatsApp chat */
+const WHATSAPP_URL = 'https://wa.me/27603205204'
+
 const details = [
   { label: 'Nationality', value: 'South African & British' },
   { label: 'Passports held', value: 'South African; British' },
@@ -14,7 +17,7 @@ const details = [
   { label: 'Marital status', value: 'Single, no dependents' },
   { label: 'Current location', value: 'Antibes, France' },
   { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '' },
+  { label: 'Phone', value: '+27 60 320 5204', href: WHATSAPP_URL, suffix: ' (available on WhatsApp)' },
 ]
 
 const profileSummary = `Motivated and reliable entry-level deckhand holding an MCA Yacht Rating and AEC1 qualification, with a strong work ethic and hands-on experience in physically demanding environments. Recently gained basic mechanical exposure assisting with maintenance and troubleshooting of a Toyosha CS 86 tractor 3-cylinder diesel engine, developing general mechanical awareness and problem-solving skills. Physically fit, safety-conscious, and eager to develop a career within the yachting industry. Strong team player with a positive attitude, keen attention to detail, and a willingness to assist the engineering department when required while primarily focusing on deck operations.`
@@ -51,7 +54,18 @@ function CV() {
           <h1 className="cv-name">William Douglas Hamilton</h1>
           <p className="cv-title">Deckhand · Yacht Crew</p>
           <div className="cv-header-contact">
-            <a href="tel:+27603205204" className="cv-header-phone">+27 60 320 5204</a>
+            <span className="cv-header-phone-line">
+              <a
+                href={WHATSAPP_URL}
+                className="cv-header-phone"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message on WhatsApp: +27 60 320 5204"
+              >
+                +27 60 320 5204
+              </a>
+              <span className="cv-header-phone-note"> (available on WhatsApp)</span>
+            </span>
             <a href="mailto:hamiltonw435@gmail.com" className="cv-cta">Get in touch via Email</a>
           </div>
         </div>
@@ -78,12 +92,23 @@ function CV() {
         <div id="cv-details-content" className="cv-dropdown-content" role="region" aria-labelledby="cv-details-trigger">
           <div className="cv-details-inner">
             <ul className="details-list">
-              {details.map(({ label, value, href }) => (
+              {details.map(({ label, value, href, suffix }) => (
                 <li key={label} className="details-item">
                   <span className="details-label">{label}:</span>
                   <span className="details-value">
                     {href ? (
-                      <a href={href} className="details-link">{value}</a>
+                      <>
+                        <a
+                          href={href}
+                          className="details-link"
+                          {...(href.startsWith('http')
+                            ? { target: '_blank', rel: 'noopener noreferrer' }
+                            : {})}
+                        >
+                          {value}
+                        </a>
+                        {suffix ? <span className="details-suffix">{suffix}</span> : null}
+                      </>
                     ) : (
                       value
                     )}
