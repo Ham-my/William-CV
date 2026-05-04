@@ -15,6 +15,12 @@
   --white: #ffffff;
   --text: #2c3e50;
   --text-muted: #5a6c7d;
+  /* Accordion rows: slightly darker than CV sheet (--white) */
+  --accordion-surface: #f1f2f4;
+  --accordion-surface-hover: #e8eaed;
+  --accordion-surface-active: #dfe1e5;
+  --accordion-surface-open: #eceef1;
+  --accordion-divider: rgba(15, 40, 64, 0.22);
 }
 
 html {
@@ -28,7 +34,7 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--cream);
+  background: #d8d8d4;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
