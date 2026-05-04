@@ -4,6 +4,8 @@ import portraitImage from './assets/WhatsApp Image 2026-05-04 at 20.53.02.jpeg'
 
 /** +27 60 320 5204 — opens WhatsApp chat */
 const WHATSAPP_URL = 'https://wa.me/27603205204'
+const CONTACT_PHONE_DISPLAY = '+27 60 320 5204'
+const CONTACT_EMAIL = 'hamiltonw435@gmail.com'
 
 function useIsMobileCv() {
   const query = '(max-width: 639px)'
@@ -78,8 +80,8 @@ const details = [
   { label: 'Languages', value: 'English | Fluent' },
   { label: 'Marital status', value: 'Single | no dependents' },
   { label: 'Current location', value: 'Athens, Greece' },
-  { label: 'Email', value: 'hamiltonw435@gmail.com', href: 'mailto:hamiltonw435@gmail.com' },
-  { label: 'Phone', value: '+27 60 320 5204', href: WHATSAPP_URL, suffix: ' | WhatsApp' },
+  { label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+  { label: 'Phone', value: CONTACT_PHONE_DISPLAY, href: WHATSAPP_URL, suffix: ' | WhatsApp' },
 ]
 
 const profileSummary = `I'm a Motivated and reliable entry-level deckhand with an MCA Yacht Rating and AEC1. I've developed a strong work ethic through living and working on a farm, along with hands-on experience in physically demanding roles. I have basic sailing experience, I'm confident using electrical tools, and I've gained practical mechanical exposure by assisting with diesel engine maintenance. I'm physically fit, safety-conscious, and genuinely eager to build a long-term career in the yachting industry. I work well in a team, pay attention to detail, and I'm always willing to help wherever needed, whether on deck or supporting the engineering side.`
@@ -164,13 +166,20 @@ function CV() {
                   className="cv-header-phone"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Message on WhatsApp: +27 60 320 5204"
+                  aria-label={`Get in touch via WhatsApp: ${CONTACT_PHONE_DISPLAY}`}
                 >
-                  +27 60 320 5204
+                  <span className="cv-header-btn-label">Get in touch via WhatsApp</span>
+                  <span className="cv-header-btn-detail">{CONTACT_PHONE_DISPLAY}</span>
                 </a>
-                <span className="cv-header-phone-note"> (WhatsApp)</span>
               </span>
-              <a href="mailto:hamiltonw435@gmail.com" className="cv-cta">Get in touch via Email</a>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="cv-cta"
+                aria-label={`Get in touch via Email: ${CONTACT_EMAIL}`}
+              >
+                <span className="cv-header-btn-label">Get in touch via Email</span>
+                <span className="cv-header-btn-detail">{CONTACT_EMAIL}</span>
+              </a>
             </div>
           </div>
         </div>
