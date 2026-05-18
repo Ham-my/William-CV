@@ -30,11 +30,11 @@ function CollapsibleSection({
   title,
   className,
   isMobile,
-  openSectionKey,
+  openSectionKeys,
   onToggle,
   children,
 }) {
-  const isOpen = !isMobile || openSectionKey === sectionKey
+  const isOpen = !isMobile || openSectionKeys.has(sectionKey)
 
   return (
     <section
@@ -121,12 +121,17 @@ const hobbiesList = [
 
 function CV() {
   const [portraitLightboxOpen, setPortraitLightboxOpen] = useState(false)
-  /** Mobile accordion: one open at a time, or none; Contact open on first load. Desktop ignores this. */
-  const [openSectionKey, setOpenSectionKey] = useState('contact')
+  /** Mobile: each section opens/closes independently; Contact open on first load. Desktop ignores this. */
+  const [openSectionKeys, setOpenSectionKeys] = useState(() => new Set(['contact']))
   const isMobileCv = useIsMobileCv()
 
   const toggleSection = (key) => {
-    setOpenSectionKey((prev) => (prev === key ? null : key))
+    setOpenSectionKeys((prev) => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
   }
 
   useEffect(() => {
@@ -156,7 +161,7 @@ function CV() {
           </button>
           <div className="cv-doc-header-main">
             <div className="cv-doc-header-text">
-              <p className="cv-doc-role">Junior Deckhand</p>
+              <p className="cv-doc-role">Deckhand | AEC1</p>
               <h1 className="cv-doc-name">William Douglas Hamilton</h1>
             </div>
             <div className="cv-header-contact">
@@ -222,7 +227,7 @@ function CV() {
             title="Contact"
             className="cv-doc-section--contact"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <ul className="details-list">
@@ -258,7 +263,7 @@ function CV() {
             title="Education"
             className="cv-doc-section--edu"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <ul className="additional-list additional-list--education">
@@ -283,7 +288,7 @@ function CV() {
             title="Skills"
             className="cv-doc-section--skills"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <ul className="qualifications-list">
@@ -301,7 +306,7 @@ function CV() {
             title="Hobbies"
             className="cv-doc-section--hobbies"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <p className="additional-prose additional-prose--lead">I enjoy a variety of outdoor and skill-based activities.</p>
@@ -318,10 +323,11 @@ function CV() {
             title="References"
             className="cv-doc-section--ref"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
-            <p className="additional-prose">References available upon request.</p>
+            <p className="additional-prose">Karlo - Chief Officer | M/Y Ouranos</p>
+            <p className="additional-prose">Contact Number: +30 694 282 2288</p>
           </CollapsibleSection>
         </div>
 
@@ -332,7 +338,7 @@ function CV() {
             title="Summary"
             className="cv-doc-section--summary"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <p className="cv-profile">{profileSummary}</p>
@@ -341,18 +347,30 @@ function CV() {
           <CollapsibleSection
             sectionKey="exp"
             titleId="sec-exp"
-            title="Experience"
+            title="Maritime Experience"
             className="cv-doc-section--exp"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
-            <ul className="additional-list">
-              <li>Practical Mechanical Exposure (Informal)</li>
-              <li>Assisted in maintenance and troubleshooting of a tractor diesel engine under supervision.</li>
-              <li>Gained basic understanding of mechanical systems and fault-finding.</li>
-              <li>Developed hands-on problem-solving skills in a workshop environment.</li>
-            </ul>
+            <div className="cv-experience-groups">
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Ouranos | 50m | Daywork | 13 April 2026</h3>
+                <ul className="additional-list">
+                  <li>Washdown & detailing</li>
+                  <li>Polishing | Exterior</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">LAND BASED EXPERIENCE</h3>
+                <ul className="additional-list">
+                  <li>Practical Mechanical Exposure (Informal)</li>
+                  <li>Assisted in maintenance and troubleshooting of a tractor diesel engine under supervision.</li>
+                  <li>Gained basic understanding of mechanical systems and fault-finding.</li>
+                  <li>Developed hands-on problem-solving skills in a workshop environment.</li>
+                </ul>
+              </div>
+            </div>
           </CollapsibleSection>
 
           <CollapsibleSection
@@ -361,7 +379,7 @@ function CV() {
             title="Qualification | licences"
             className="cv-doc-section--qual"
             isMobile={isMobileCv}
-            openSectionKey={openSectionKey}
+            openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
             <ul className="qualifications-list">
