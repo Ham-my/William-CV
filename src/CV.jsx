@@ -328,6 +328,8 @@ function CV() {
           >
             <p className="additional-prose">Karlo - Chief Officer | M/Y Ouranos</p>
             <p className="additional-prose">Contact Number: +30 694 282 2288</p>
+            <p className="additional-prose">Joseph - Chief Engineer | M/Y Lady Malak</p>
+            <p className="additional-prose">Contact Number: +30 698 836 3199</p>
           </CollapsibleSection>
         </div>
 
@@ -359,6 +361,12 @@ function CV() {
                 <ul className="additional-list">
                   <li>Washdown & detailing</li>
                   <li>Polishing | Exterior</li>
+                </ul>
+                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 27-28 May | 5-6 June 2026</h3>
+                <ul className="additional-list">
+                  <li>Full washdown</li>
+                  <li>Stainless steel polishing</li>
+                  <li>Teak cleaning Step 1 and Step 2</li>
                 </ul>
               </div>
               <div className="cv-experience-group">
