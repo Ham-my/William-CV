@@ -393,7 +393,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
-/* Two columns on desktop: left = contact, education, skills, hobbies, refs — right = summary, experience, quals */
+/* Two columns on desktop: left = contact, education, quals, skills, hobbies — right = summary, maritime, land experience; refs full width below */
 .cv-doc-grid {
   margin-top: 0;
 }
@@ -415,23 +415,26 @@
   .cv-doc-section--summary {
     order: 2;
   }
-  .cv-doc-section--exp {
+  .cv-doc-section--qual {
     order: 3;
   }
-  .cv-doc-section--qual {
+  .cv-doc-section--exp {
     order: 4;
   }
-  .cv-doc-section--edu {
+  .cv-doc-section--land {
     order: 5;
   }
   .cv-doc-section--skills {
     order: 6;
   }
-  .cv-doc-section--hobbies {
+  .cv-doc-section--edu {
     order: 7;
   }
-  .cv-doc-section--ref {
+  .cv-doc-section--hobbies {
     order: 8;
+  }
+  .cv-doc-section--ref {
+    order: 9;
   }
 }
 
@@ -448,7 +451,7 @@
   .cv-doc-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0 2.25rem;
+    gap: 1.5rem 2.25rem;
     align-items: start;
   }
 
@@ -465,6 +468,10 @@
 
   .cv-doc-col .cv-doc-section {
     margin-bottom: 0;
+  }
+
+  .cv-doc-section--full {
+    grid-column: 1 / -1;
   }
 }
 
@@ -501,7 +508,7 @@
     background: var(--accordion-divider);
   }
 
-  .cv-doc-col--left > .cv-doc-section:last-child::after {
+  .cv-doc-section--ref::after {
     display: none;
   }
 

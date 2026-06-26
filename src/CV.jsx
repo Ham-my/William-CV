@@ -283,6 +283,25 @@ function CV() {
           </CollapsibleSection>
 
           <CollapsibleSection
+            sectionKey="qual"
+            titleId="sec-qual"
+            title="Qualification | licences"
+            className="cv-doc-section--qual"
+            isMobile={isMobileCv}
+            openSectionKeys={openSectionKeys}
+            onToggle={toggleSection}
+          >
+            <ul className="qualifications-list">
+              {qualifications.map(({ bold, rest }, i) => (
+                <li key={i} className="qualification-item">
+                  <strong>{bold}</strong>
+                  {rest}
+                </li>
+              ))}
+            </ul>
+          </CollapsibleSection>
+
+          <CollapsibleSection
             sectionKey="skills"
             titleId="sec-skills"
             title="Skills"
@@ -316,21 +335,6 @@ function CV() {
               ))}
             </ul>
           </CollapsibleSection>
-
-          <CollapsibleSection
-            sectionKey="ref"
-            titleId="sec-ref"
-            title="References"
-            className="cv-doc-section--ref"
-            isMobile={isMobileCv}
-            openSectionKeys={openSectionKeys}
-            onToggle={toggleSection}
-          >
-            <p className="additional-prose">Karlo - Chief Officer | M/Y Ouranos</p>
-            <p className="additional-prose">Contact Number: +30 694 282 2288</p>
-            <p className="additional-prose">Joseph - Chief Engineer | M/Y Lady Malak</p>
-            <p className="additional-prose">Contact Number: +30 698 836 3199</p>
-          </CollapsibleSection>
         </div>
 
         <div className="cv-doc-col cv-doc-col--right">
@@ -357,11 +361,27 @@ function CV() {
           >
             <div className="cv-experience-groups">
               <div className="cv-experience-group">
-                <h3 className="cv-experience-group-title">M/Y Ouranos | 50m | Daywork | 13 April 2026</h3>
+                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 19 June 2026</h3>
                 <ul className="additional-list">
-                  <li>Washdown & detailing</li>
-                  <li>Polishing | Exterior</li>
+                  <li>Full washdown</li>
+                  <li>Interior cleaning</li>
                 </ul>
+              </div>
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Lady Malak Chase Boat | 12m | Daywork | 18 June 2026</h3>
+                <ul className="additional-list">
+                  <li>Full washdown</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 9-10 June inc 12 June 2026</h3>
+                <ul className="additional-list">
+                  <li>Full washdown</li>
+                  <li>Deisel and Oil filter change in Engine Room</li>
+                  <li>Polish work and Waxing</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
                 <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 27-28 May | 5-6 June 2026</h3>
                 <ul className="additional-list">
                   <li>Full washdown</li>
@@ -370,36 +390,45 @@ function CV() {
                 </ul>
               </div>
               <div className="cv-experience-group">
-                <h3 className="cv-experience-group-title">LAND BASED EXPERIENCE</h3>
+                <h3 className="cv-experience-group-title">M/Y Ouranos | 50m | Daywork | 13 April 2026</h3>
                 <ul className="additional-list">
-                  <li>Practical Mechanical Exposure (Informal)</li>
-                  <li>Assisted in maintenance and troubleshooting of a tractor diesel engine under supervision.</li>
-                  <li>Gained basic understanding of mechanical systems and fault-finding.</li>
-                  <li>Developed hands-on problem-solving skills in a workshop environment.</li>
+                  <li>Washdown and detailing</li>
+                  <li>Polishing | Exterior</li>
                 </ul>
               </div>
             </div>
           </CollapsibleSection>
 
           <CollapsibleSection
-            sectionKey="qual"
-            titleId="sec-qual"
-            title="Qualification | licences"
-            className="cv-doc-section--qual"
+            sectionKey="land"
+            titleId="sec-land"
+            title="Land based experience"
+            className="cv-doc-section--land"
             isMobile={isMobileCv}
             openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
-            <ul className="qualifications-list">
-              {qualifications.map(({ bold, rest }, i) => (
-                <li key={i} className="qualification-item">
-                  <strong>{bold}</strong>
-                  {rest}
-                </li>
-              ))}
+            <ul className="additional-list">
+              <li>Practical Mechanical Exposure (Informal)</li>
+              <li>Assisted in maintenance and troubleshooting of a tractor diesel engine under supervision.</li>
+              <li>Gained basic understanding of mechanical systems and fault-finding.</li>
+              <li>Developed hands-on problem-solving skills in a workshop environment.</li>
             </ul>
           </CollapsibleSection>
         </div>
+
+        <CollapsibleSection
+          sectionKey="ref"
+          titleId="sec-ref"
+          title="References"
+          className="cv-doc-section--ref cv-doc-section--full"
+          isMobile={isMobileCv}
+          openSectionKeys={openSectionKeys}
+          onToggle={toggleSection}
+        >
+          <p className="additional-prose">Joseph - Chief Engineer | M/Y Lady Malak | Contact Number: +30 698 836 3199</p>
+          <p className="additional-prose">Karlo - Chief Officer | M/Y Ouranos | Contact Number: +30 694 282 2288</p>
+        </CollapsibleSection>
       </div>
     </article>
   )
