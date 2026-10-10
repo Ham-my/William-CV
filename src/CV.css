@@ -725,6 +725,10 @@
   hyphens: auto;
 }
 
+.cv-profile + .cv-profile {
+  margin-top: 0.75rem;
+}
+
 /* Lists */
 .qualifications-list {
   list-style: none;

@@ -84,13 +84,16 @@ const details = [
   { label: 'Phone', value: CONTACT_PHONE_DISPLAY, href: WHATSAPP_URL, suffix: ' | WhatsApp' },
 ]
 
-const profileSummary = `I'm a Motivated and reliable entry-level deckhand with an MCA Yacht Rating and AEC1. I've developed a strong work ethic through living and working on a farm, along with hands-on experience in physically demanding roles. I have basic sailing experience, I'm confident using electrical tools, and I've gained practical mechanical exposure by assisting with diesel engine maintenance. I'm physically fit, safety-conscious, and genuinely eager to build a long-term career in the yachting industry. I work well in a team, pay attention to detail, and I'm always willing to help wherever needed, whether on deck or supporting the engineering side.`
+const profileSummary = [
+  'I am a motivated, hardworking and reliable deckhand holding an MCA Yacht Rating and AEC1, with hands-on experience gained aboard several yachts in 2026. I was recently entrusted with the independent care of a 32m superyacht in Piraeus, Greece, for two months, where I was responsible for maintaining the interior and exterior, monitoring bilges, managing water tank refills, ensuring that the engines and plumbing were running smoothly and maintaining onboard security. This role required initiative, attention to detail and regular communication with the Captain and Engineer while they were working elsewhere in the Mediterranean.',
+  'I have developed a strong work ethic through living and working on the family farm, along with experience in physically demanding roles. I have basic sailing experience, am confident using electrical tools and have gained practical mechanical experience assisting with diesel engine maintenance. Physically fit, safety-conscious and eager to build a long-term career in the yachting industry, I work well both independently and as part of a team, and am always willing to assist wherever needed, including supporting the engineering team.',
+]
 
 const qualifications = [
   { bold: 'MCA Yacht Rating', rest: ' – Certified by the Maritime and Coastguard Agency' },
   {
     bold: 'AEC1 (Approved Engine Course 1)',
-    rest: ' – Entry-level engineering certification, providing foundational knowledge in marine engine systems, maintenance, and onboard safety',
+    rest: ' – Entry-level engineering certification',
   },
   { bold: 'STCW 2010', rest: ' Basic Safety Training (Exp: Jan 2031)' },
   { bold: 'ENG1', rest: ' Seafarer Medical Certificate (Exp: Feb 2028)' },
@@ -101,12 +104,17 @@ const qualifications = [
   { bold: 'RYA PWC', rest: ' Proficiency' },
   { bold: 'RYA PWC', rest: ' Instructor' },
   { bold: 'PADI Advanced', rest: ' Open Water Diver' },
+  { bold: 'Seafarers', rest: ' Identification & Record Book' },
 ]
 
 const skills = [
+  'Washdowns',
+  'Deck and engine room maintenance',
+  'Working independently and alongside people',
+  'Security watch',
   'Basic sailing experience',
   'Competent with electrical tools',
-  'Basic mechanical knowledge (diesel engines)',
+  'Basic mechanical knowledge with diesel engines',
   'Strong physical fitness and work ethic',
 ]
 
@@ -328,7 +336,7 @@ function CV() {
             openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
-            <p className="additional-prose additional-prose--lead">I enjoy a variety of outdoor and skill-based activities.</p>
+            
             <ul className="additional-list">
               {hobbiesList.map((h) => (
                 <li key={h}>{h}</li>
@@ -347,7 +355,11 @@ function CV() {
             openSectionKeys={openSectionKeys}
             onToggle={toggleSection}
           >
-            <p className="cv-profile">{profileSummary}</p>
+            {profileSummary.map((para) => (
+              <p key={para.slice(0, 32)} className="cv-profile">
+                {para}
+              </p>
+            ))}
           </CollapsibleSection>
 
           <CollapsibleSection
@@ -361,6 +373,33 @@ function CV() {
           >
             <div className="cv-experience-groups">
               <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Seasonal Deckhand | Athens, Greece | 1 July – 31 August 2026</h3>
+                <ul className="additional-list">
+                  <li>Full washdown & detailing, interior cleaning</li>
+                  <li>Stainless steel polishing</li>
+                  <li>Teak cleaning step 1 and step 2</li>
+                  <li>Monitoring & cleaning bilges</li>
+                  <li>Managing water tank refills</li>
+                  <li>Onboard security</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Azure | 24m | Daywork | 17 - 22 August 2026</h3>
+                <ul className="additional-list">
+                  <li>Full washdown & interior cleaning</li>
+                  <li>Tender washdown</li>
+                  <li>Mooring & anchoring</li>
+                  <li>Sea trial</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
+                <h3 className="cv-experience-group-title">M/Y Lady Malak Chase Boat | 12m | Daywork | 7 July 2026</h3>
+                <ul className="additional-list">
+                  <li>Sea trial</li>
+                  <li>Refueling diesel tank</li>
+                </ul>
+              </div>
+              <div className="cv-experience-group">
                 <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 19 June 2026</h3>
                 <ul className="additional-list">
                   <li>Full washdown</li>
@@ -371,14 +410,15 @@ function CV() {
                 <h3 className="cv-experience-group-title">M/Y Lady Malak Chase Boat | 12m | Daywork | 18 June 2026</h3>
                 <ul className="additional-list">
                   <li>Full washdown</li>
+                  <li>Interior cleaning</li>
                 </ul>
               </div>
               <div className="cv-experience-group">
-                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 9-10 June inc 12 June 2026</h3>
+                <h3 className="cv-experience-group-title">M/Y Lady Malak | 32m | Daywork | 9,10,12 June 2026</h3>
                 <ul className="additional-list">
                   <li>Full washdown</li>
-                  <li>Deisel and Oil filter change in Engine Room</li>
-                  <li>Polish work and Waxing</li>
+                  <li>Deisel and oil filter change in engine room</li>
+                  <li>Polishing & waxing | exterior</li>
                 </ul>
               </div>
               <div className="cv-experience-group">
@@ -393,7 +433,7 @@ function CV() {
                 <h3 className="cv-experience-group-title">M/Y Ouranos | 50m | Daywork | 13 April 2026</h3>
                 <ul className="additional-list">
                   <li>Washdown and detailing</li>
-                  <li>Polishing | Exterior</li>
+                  <li>Polishing | exterior</li>
                 </ul>
               </div>
             </div>
@@ -427,6 +467,7 @@ function CV() {
           onToggle={toggleSection}
         >
           <p className="additional-prose">Joseph - Chief Engineer | M/Y Lady Malak | Contact Number: +30 698 836 3199</p>
+          <p className="additional-prose">George - Captain | M/Y Azure | Contact Number: +30 694 282 2288</p>
           <p className="additional-prose">Karlo - Chief Officer | M/Y Ouranos | Contact Number: +30 694 282 2288</p>
         </CollapsibleSection>
       </div>
