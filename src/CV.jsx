@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import './CV.css'
 import portraitImage from './assets/WhatsApp Image 2026-05-04 at 20.53.02.jpeg'
 
-/** +27 60 320 5204 — opens WhatsApp chat */
-const WHATSAPP_URL = 'https://wa.me/27603205204'
-const CONTACT_PHONE_DISPLAY = '+27 60 320 5204'
+/** +27 79 129 6453 — opens WhatsApp chat */
+const WHATSAPP_URL = 'https://wa.me/27791296453'
+const CONTACT_PHONE_DISPLAY = '+27 79 129 6453'
 const CONTACT_EMAIL = 'hamiltonw435@gmail.com'
 
 function useIsMobileCv() {
